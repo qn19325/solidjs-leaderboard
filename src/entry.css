@@ -1,0 +1,11 @@
+td.entry-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+
+    button {
+        width: 50px;
+        height: 30px;
+    }
+}

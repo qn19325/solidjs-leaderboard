@@ -1,0 +1,65 @@
+body {
+  font-family: Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: #335d92;
+  text-transform: uppercase;
+  font-size: 4rem;
+  font-weight: 100;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.button {
+  font-family: inherit;
+  font-size: inherit;
+  color: #335d92;
+  background-color: rgba(68, 107, 158, 0.1);
+  border-radius: 2em;
+  border: 2px solid rgba(68, 107, 158, 0);
+  outline: none;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+
+.button:hover {
+  border: 2px solid #335d92;
+}
+
+.button:active {
+  background-color: rgba(68, 107, 158, 0.2);
+}
+
+.add-player {
+  margin-top: 20px;
+}
+
+td {
+  width: 100px;
+  text-align: left;
+  user-select: none;
+}
+
+th {
+  width: 100px;
+  text-align: left;
+}
+
+tr:hover {
+  background-color: #8bacd4;
+}
+
+tr:hover th {
+  background-color: white;
+}
