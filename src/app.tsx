@@ -1,38 +1,38 @@
-import { createEffect, createSignal, For, Show } from "solid-js";
+import { createSignal, For, Show } from "solid-js";
 import "./app.css";
 import Entry from "./entry";
 import CurrentEntry from "./currentEntry";
+import { createStore } from "solid-js/store";
 
 export interface player {
+  id: string
   name: string,
-  score: number
+  score: number,
 }
 
 export default function App() {
-  const [players, setPlayers] = createSignal<player[]>([])
-  const [currentPlayer, setCurrentPlayer] = createSignal<player>({name: "", score: 0})
+  const [players, setPlayers] = createStore<player[]>([])
+  const [currentPlayer, setCurrentPlayer] = createSignal<player>({id: "", name: "", score: 0})
 
   const addPlayer = () => {
-    setPlayers([...players(), { name: `Player ${players().length + 1}`, score: 0 }]);
-    if (currentPlayer().name === "") {
-      setCurrentPlayer(players()[0])
+    setPlayers([...players, { id: `${players.length + 1}`, name: `Player ${players.length + 1}`, score: 0 }]);
+    if (currentPlayer().id === "") {
+      setCurrentPlayer(players[0])
     }
   }
   const select = (idx: number) => {
-    setCurrentPlayer(players()[idx])
+    setCurrentPlayer(players[idx])
   };
-  const increase = (idx: number) => {
-    setPlayers(p => p.map((val, i) => { return idx === i ? { ...val, score: val.score + 1} : val }).sort((a, b) => b.score - a.score))
-    if (players()[idx].name === currentPlayer().name) {
-      setCurrentPlayer(players()[idx])
-    }
+  const increase = (id: string) => {
+    setPlayers((p) => p.id === id, "score", (score) => score += 1);
+    setPlayers(players.sort((a, b) => b.score - a.score))
   };
 
   return (
     <main>
       <h1>Leaderboard</h1>
-      <Show when={players().length} fallback={"Empty"}>
-        <CurrentEntry name={currentPlayer()?.name ?? ""} score={currentPlayer()?.score ?? 0} />
+      <Show when={players.length} fallback={"Empty"}>
+        <CurrentEntry id={currentPlayer().id} name={currentPlayer()?.name ?? ""} score={currentPlayer()?.score ?? 0} />
         <table>
           <tbody>
             <tr>
@@ -40,8 +40,8 @@ export default function App() {
               <th>Score</th>
               <th>Adjust Score</th>
             </tr>
-            <For each={players()} >{(player, i) =>
-                <Entry name={player.name} score={player.score} select={() => select(i())} increase={() => increase(i())} />
+            <For each={players} >{(player, i) =>
+                <Entry name={player.name} score={player.score} select={() => select(i())} increase={() => increase(player.id)} />
             }</For>
           </tbody>
         </table>
