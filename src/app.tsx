@@ -45,4 +45,5 @@ export default function App() {
       <button class="button add-player" onClick={addPlayer} type="button">Add Player</button>
     </main>
   );
+  
 }
