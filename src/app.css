@@ -1,15 +1,15 @@
 body {
   font-family: Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-a {
-  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
-  text-align: center;
-  padding: 1em;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -18,44 +18,48 @@ h1 {
   font-size: 4rem;
   font-weight: 100;
   line-height: 1.1;
-  margin: 4rem auto;
-  max-width: 14rem;
+  text-align: center;
 }
 
-p {
-  max-width: 14rem;
-  margin: 2rem auto;
-  line-height: 1.35;
-}
-
-@media (min-width: 480px) {
-  h1 {
-    max-width: none;
-  }
-
-  p {
-    max-width: none;
-  }
-}
-
-.increment {
+.button {
   font-family: inherit;
   font-size: inherit;
-  padding: 1em 2em;
   color: #335d92;
   background-color: rgba(68, 107, 158, 0.1);
   border-radius: 2em;
   border: 2px solid rgba(68, 107, 158, 0);
   outline: none;
-  width: 200px;
   font-variant-numeric: tabular-nums;
   cursor: pointer;
 }
 
-.increment:focus {
+.button:hover {
   border: 2px solid #335d92;
 }
 
-.increment:active {
+.button:active {
   background-color: rgba(68, 107, 158, 0.2);
+}
+
+.add-player {
+  margin-top: 20px;
+}
+
+td {
+  width: 100px;
+  text-align: left;
+  user-select: none;
+}
+
+th {
+  width: 100px;
+  text-align: left;
+}
+
+tr:hover {
+  background-color: #8bacd4;
+}
+
+tr:hover th {
+  background-color: white;
 }
