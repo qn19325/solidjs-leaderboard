@@ -1,11 +1,16 @@
 import "./currentEntry.css"
 import { player } from "./app"
 
-export default function CurrentEntry(props: player) {
+interface currentEntryProps {
+  Player: player | null
+}
+
+export default function CurrentEntry(props: currentEntryProps) {
   return (
     <div class="current-entry">
-        <div class="current-entry-name">{props.name}</div>
-        <div class="current-entry-score">{props.score}</div>
+        <img class="current-entry-icon" src={props.Player?.icon} alt="" />
+        <div class="current-entry-name">{props.Player?.name}</div>
+        <div class="current-entry-score">{props.Player?.score}</div>
     </div>
   );
 }

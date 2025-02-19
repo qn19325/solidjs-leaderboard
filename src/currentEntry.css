@@ -1,11 +1,16 @@
 .current-entry {
-    width: 100px;
-    height: 100px;
-    background-color: green;
+    width: 250px;
+    height: 250px;
+    border: solid;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
     gap: 10px;
+}
+
+.current-entry-icon {
+    width: 100px;
+    height: 100px;
 }
